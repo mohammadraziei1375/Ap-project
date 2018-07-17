@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<button onclick="openWin()">Open w3schools.com in a new window</button>
+<button onclick="closeWin()">Close the new window (w3schools.com)</button>
+
+
+<p>Click the button to open a new window with some specifications.</p>
+
+<button onclick="myFunction()">Try it</button>
+<button onclick="mmm()">Check window</button>
+
+<button onclick="resizeWin()">Resize window</button>
+<p id="demo"></p>
+
+<button onclick="sssss()">Try it</button>
+
+<p id="demo1"></p>
+
+<script>
+function sssss() {
+    document.getElementById("demo1").innerHTML =
+    "Name is " + navigator.appName +
+    "<br>Code name is " + navigator.appCodeName;
+}
+function mmm() {
+    if (window.top != window.self)  {
+        document.getElementById("demo").innerHTML = "This window is not the topmost window! Am I in a frame?";
+    } else {
+        document.getElementById("demo").innerHTML = "This window is the topmost window!";
+    }
+}
+function resizeWin() {
+    top.resizeBy(100, 100);
+}
+function myFunction() {
+    window.open("http://www.w3schools.com", "_blank", "toolbar=yes,scrollbars=yes,resizable=no,top=500,left=500,width=400,height=400");
+}
+var myWindow;
+var URL = "http://www.w3schools.com";
+function openWin() {
+    myWindow = window.open(URL, "_blank","top=1000 , width=500, height=500");
+}
+
+function closeWin() {
+    window.close();
+}
+</script>
+
+</body>
+</html>
+
+
+

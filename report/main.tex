@@ -1,0 +1,245 @@
+\documentclass[oneside]{article}
+
+\usepackage{siunitx}
+\usepackage{enumerate}
+\usepackage{fancyhdr}
+\usepackage{minted}
+\usepackage{lastpage}
+\usepackage{tcolorbox}
+\usepackage{booktabs}
+\usepackage{amsmath}
+\usepackage[colorlinks=true]{hyperref}
+\usepackage{caption} 
+\captionsetup[table]{skip=5pt}
+\usepackage{setspace}
+\usepackage[absolute]{textpos}
+\usepackage{xepersian} % Always last package to load
+
+\settextfont{XW Zar}
+\setlatintextfont{Adobe Garamond Pro}
+\setlatinmonofont[Scale=0.8]{Monaco}
+\defpersianfont\nastaliqfont{IranNastaliq}
+\setlength{\TPHorizModule}{1cm}
+\setlength{\TPVertModule}{1cm}
+\linespread{1.5}
+\pagestyle{fancy}
+\renewcommand{\headrulewidth}{0pt}
+\newcommand*{\fancypagenumber}{%
+\fancyfoot[C]{صفحه
+\thepage
+از
+\pageref{LastPage}}
+}
+\fancypagenumber
+\fancypagestyle{plain}{\fancypagenumber}
+% insert syntax highlighted code from a file
+\newcommand{\inputcode}[2]{\inputminted[mathescape,%
+                                                 linenos=false,%
+                                                 formatcom=\small\setstretch{1}]{#1}{#2}}%
+%\renewcommand{\theFancyVerbLine}{\sffamily\scriptsize
+%\textcolor[rgb]{0.5,0.5,1.0}{\oldstylenums{\arabic{FancyVerbLine}}}}
+\renewcommand{\textfraction}{0.05}
+\renewcommand{\topfraction}{0.8} 
+\renewcommand{\bottomfraction}{0.8} 
+\renewcommand{\floatpagefraction}{0.8}
+\title{ پروژه درس برنامه نویسی پیشرفته \\ ساخت ربات تلگرام}
+\author{محمد رضیئی فیجانی}
+\begin{document}
+\maketitle\thispagestyle{empty}
+\begin{textblock}{5}(6.5,2)\nastaliqfont
+\noindent\Large
+بسم الله الرحمن الرحیم
+\end{textblock}
+
+\section{تعریف پروژه}
+در این پروژه سعی شده تا رباتی برای توسعه کانال بااستفاده از ربات تلگرام ساخته شود. مفهوم جدید \lr{branch} نیز به جای کانال استفاده شده است.
+روند کار ساده و قابل توسعه است. به این صورت که در ابتدا یک نفر در بات یک \lr{branch} را میسازد و همچنین می تواند عده ای را بعنوان کمکی خود یا به عبارتی 
+\lr{Co-Admin}
+در نظر بگیرد.
+
+پس از ایجاد آن، دیگران میتوانند عضو آن شوند. این عمل با دانستن اسم 
+\lr{branch}
+که هم نام با اسم کانال است، به راحتی میسر خواهد بود. همچنین امکان سرچ آنلاین برای دیدن تمامی
+\lr{branch} 
+ها نیز در نظر گرفته شده است.
+افراد پس از ورود به 
+\lr{branch} 
+مورد نظر، می توانند برای ادمین و کو-ادمین ها مطلبی را ارسال کنند که با تایید آن ها آن متن به کانال وابسته به
+\lr{branch} 
+ارسال میشود.
+
+\section{بررسی فنی پروژه}
+\subsection{اطلاعات سرور}
+باتوجه به فیلتر شدن 
+\lr{Telegram}
+ و همچنین عدم داشتن سرور، به اجبار از سرور رایگان  
+ \href{https://jahanserver.com/}{Jahan server }
+ استفاده کردیم که آن نیز ما را مجبور به استفاده از 
+ \lr{php}
+ بعنوان زبان برنامه نویسی کرد.
+
+ تمامی فایل های این پروژه توسط این
+ \href{ftp://telegr28:telegram123456@telegramadminpro.ml/public_html}{FTP}
+ قابل مشاهده است.
+ فایل های اصلی در فولدر های 
+\href{ftp://telegr28:telegram123456@telegramadminpro.ml/public_html/bot}{bot}
+ ( فایل های ایجاد بات تلگرام ) و همچنین
+\href{ftp://telegr28:telegram123456@telegramadminpro.ml/public_html/channel_manager}{channel\_manager} 
+( جست و جوی آنلاین 
+\lr{branch} 
+ها )
+قرار گرفته اند.
+
+\begin{table}
+\caption{اطلاعات سرور}
+\label{tbl:server}
+\centering
+\renewcommand{\arraystretch}{1.3}
+\begin{tabular}{rrr}\toprule 
+server & \lr{telegramadminpro.ml}
+\\
+Username & \lr{telegr28}
+\\
+Password & \lr{telegram123456}
+\\
+Port & \lr{21}
+\\
+\href{https://github.com/mohammadraziei1375/Ap-project.git}{Git} & \lr{https://github.com/mohammadraziei1375/Ap-project.git}
+\\
+\bottomrule
+\end{tabular}
+\end{table}
+
+اطلاعات بیشتر در 
+\autoref{tbl:server}
+موجود می باشد.
+
+\subsection{توضیح اولیه}
+کد های این بات به طور خاص، در فایل 
+\href{ftp://telegr28:telegram123456@telegramadminpro.ml/public_html/bot/channel_manager.php}{channel\_manager.php}
+وجود دارد.
+\begin{figure}
+\centering
+\includegraphics[width=1\textwidth]{../database.png}
+\caption{دیتابیس مورد استفاده}
+\label{fig:database}
+\end{figure}
+این فایل شامل تمامی اطلاعات این بات است. دیتابیس در نظر گرفته شده همان طور که 
+\autoref{fig:database}
+نشان میدهد؛ بسیار جامع است.
+و حتی فارغ از نوع مسنجر(تلگرام و ...) می باشد.
+\subsection{\lr{Telegram API}}
+در این پروژه سعی شد تا بدون استفاده از کتابخانه های معرفی شده خود تلگرام و تنها با استفاده از \lr{API} تلگرام و \lr{query} کردن، اطلاعات مورد نیاز را در حالت فایل json به عنوان ورودی آنالیز کنیم و فرایند ساخت ربات را پیش ببریم.
+
+فایل 
+\href{ftp://telegr28:telegram123456@telegramadminpro.ml/public_html/bot/bot_class.php}{bot\_class.php}
+واقع در دایرکتوری 
+\href{ftp://telegr28:telegram123456@telegramadminpro.ml/public_html/bot}{bot}
+ همین کار را برای ما انجام میدهد. 
+
+ همچنین  فایل 
+\href{ftp://telegr28:telegram123456@telegramadminpro.ml/public_html/bot/input_analyzer_class}{input\_analyzer\_class.php}
+برای آنالیز ورودی ورودی و تهیه متغیر $\$input$ مورد استفاده قرار میگیرد.
+منظور از آنالیز این است که تلگرام هنگام \lr{query} کردن سرور ما، \lr{token} را نیز میدهد. با گرفتن آن، و مقایسه با \lr{token} اصلی، میتوان تشخیص داد که این درخواست؛ معتبر ایت یا خیر. درصورت عدم تطابق درخواست را رد یا به اصطلاح \lr{\texttt{die();}} می کند.
+همچنین همانطور که توضیح داده شد؛ ورودی به صورت \lr{json} می باشد. بنابراین، درصورت تطابق، برای دسترسی راحت تر آن را درون متغیر $\$input$ به صورت آرایه ذخیره میکنیم.
+
+\subsection{ چند زبانی }
+از افتخارات این پروژه درنظر گرفتن خاصیت چند زبانی (
+\lr{Multi Language}
+) بودن آن است.
+برای این کار از کلاس $parser$ استفاده شده است که داخل فایل 
+\href{ftp://telegr28:telegram123456@telegramadminpro.ml/public_html/bot/parser_class.php}{parser\_class.php}
+قرار دارد.
+
+\begin{table}
+\caption{کلاس parser}
+\label{tbl:parser}
+\centering
+\renewcommand{\arraystretch}{1.3}
+\begin{tabular}{rrr}\toprule 
+constructor & تابع سازنده کلاس که فایل ورودی و زبان را به صورت رشته دریافت میکند.
+\\
+langFile & فایل در حال بررسی را به صورت رشته آدرس آن را خروجی میدهد.
+\\
+ & این خروجی با ورودی تابع سازنده متفاوت است.
+\\
+& مثلا اگر فایل و زبان ورودی تابع سازنده به صورت "default.json" و "fa" باشد؛
+\\ 
+& آنگاه خروجی این تابع به صورت "default-fa.json" می باشد.
+\\
+& در صورت عدم یافتن آن فایل "default-en.json" خوانده میشود.
+\\
+& همچنین درصورت عدم یافتن آن، هر زبان دیگری را که وجود داشته باشد، را برمیگرداند. 
+\\
+lang & همان زبان را به صورت خروجی می دهد.
+\\
+subFile & این تابع مثلا "help.pdf" را میگیرد و مثلا "help-fa.json" را خروجی میدهد.
+\\
+parse & این مهمترین تابع است.
+\\
+& دو ورودی به صورت رشته میگیرد : دامنه و کلید.
+\\
+& \textbf{کلید} 
+که تعریفش مشخص است و خروجی مقدار آن کلید است.
+\\
+&  \textbf{دامنه}
+به مجموعه کلید های مرتبط که در یک کلاس ریخته شده اند اتلاق میشود.
+\\
+& همان گونه که گفته شد خروجی به صورت رشته است. 
+\\ &
+این تابع عامل چند زبانی شدن برنامه و پراستفاده ترین تابع آن است.
+\\
+\bottomrule
+\end{tabular}
+\end{table}
+
+
+این کلاس دارای توابعی است که در \autoref{tbl:parser} توضیح داده شده اند.
+تنها کافیست که \lr{value} های فایل \lr{json} ترجمه شوند تا بتوان آن هارا چندین زبان بدون دست بردن به کد حتی یک ذره نمود. 
+
+این روش از ابداعات و خلاقیت های این پروژه بوده است و روش مشابه با آن از قبل دیده نشده بود.
+
+
+\subsection{دیتابیس}
+دیتابیس مورد استفاده همان \autoref{fig:database} می باشد. چند نکته بایستی در مورد آن متذکر شد.
+\begin{itemize}
+\item
+ در \autoref{fig:database} هر جدولی که زیر اسم آن \lr{\texttt{"""main"""}} نوشته شده باشد، به صورت عمومی است. یعنی برای هرتعداد بات و حتی مسنجری قابل استفاده است.
+\item
+ جداولی که با رنگ سبز مشخص شده اند به طور خاص برای این بات مورد استفاده قرار میگیرند.
+\item
+تمامی \lr{branch} ها در داخل جدول \lr{branches} یافت میشوند. هر یک از آن ها یک سازنده دارد و همچنین تعدادی را درقالب جیسون بعنوان بلاک میگیرد.
+\item
+هرکس در داخل بات اولا یک یوزر بات است و ثانیا در پس از ایجاد کردن یا پیوستن به هر شاخه، یک یوزر برنچ نیز میشوند.
+\lr{\textbf{priority}} 
+هر یوزر برنچ، در حقیقت سمت هرکس در آن شاخه است. بعنوان مثال؛ برای سازنده، 10 و برای کو-ادمین ها، 9 و برای اعضا، 1 است.
+حالت صفر نیز مخصوص افراد بلاک شده است. حالت منفی در است مفروض نیست. اما در برنامه نویسی ربات، برای انتخاب کردن شاخه در حال کار، \lr{priority} آن را قرینه کردیم. در واقع هرکس حداکثر یک \lr{priority} منفی دارد.
+\item
+یوزر-بات، جدولی است که می گوید هر یوزری در داخل هر باتی، یک \lr{status} و یک \lr{path} دارد.
+این دو برای ایجاد دکمه هایی مانند back و forward لازم هستند.
+فایل
+\href{ftp://telegr28:telegram123456@telegramadminpro.ml/public_html/bot/stack_class.php}{stack\_class.php}
+به پردازش این 2 اطلاعات می پردازد.
+
+
+
+\end{itemize}
+
+
+\section{نحوه کار کردن با بات}
+ابتدا از ما انخاب زبان را میخواهد. سپس با توجه به زبان اتخاب شده متن را تنظیم میکند. سپس از ما میخواد یا \lr{log in} یا \lr{log up} کنیم یا به طور کلی از این وضعیت خارج شویم.
+در نوار زیرین دکمه های \lr{back} و \lr{forward} و \lr{home} و \lr{restart} به صورت ایموجی وجود دارد.
+
+برای ایجاد یا پیوستن به یک شاخه کافیست روی \lr{menu} کلیک کنیم.
+حال مثلا وارد ایجاد کردن میشویم. در این حالت ایتدا نام کانال مورد نظر را انتخاب میکنیم. سپس تا زمانی که \lr{\texttt{done}} را نزده ایم، به انتخاب کو ادمین ها می پردازیم. برای این کار کافیست، یا یوزرنیم آن هارا بدهیم، یا با استفاده از یک پیام فورواردی از آن ها این کار را کنیم.
+برای پیوستن هم کافیست این بار پیوستن را انتخاب کنیم و پس از جست و جو کردن در 
+\href{http://telegramadminpro.ml/channel_manager}{سایت}
+ یا وارد کردن نام کانال، به آن پیوست.
+ 
+ از طریق قسمت پروفایل، پروفایل به طور مناسبی قابل مشاهده می باشد. با رفتن روی هر شاخه و فرستادن پست به آن میتوان ازآن استفاده کرد.
+ 
+\centering 
+ پایان
+
+\end{document}
+

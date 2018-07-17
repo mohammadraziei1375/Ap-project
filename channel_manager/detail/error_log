@@ -1,0 +1,24 @@
+[12-Jul-2018 17:01:03 UTC] PHP Warning:  include(sql/db.class.php): failed to open stream: No such file or directory in /home/telegr28/public_html/channel_manager/detail/test.php on line 137
+[12-Jul-2018 17:01:03 UTC] PHP Warning:  include(): Failed opening 'sql/db.class.php' for inclusion (include_path='.:/opt/cpanel/ea-php56/root/usr/share/pear') in /home/telegr28/public_html/channel_manager/detail/test.php on line 137
+[12-Jul-2018 17:01:03 UTC] PHP Fatal error:  Class 'DB' not found in /home/telegr28/public_html/channel_manager/detail/test.php on line 140
+[12-Jul-2018 17:01:40 UTC] PHP Warning:  include(sql/db.class.php): failed to open stream: No such file or directory in /home/telegr28/public_html/channel_manager/detail/test.php on line 137
+[12-Jul-2018 17:01:40 UTC] PHP Warning:  include(): Failed opening 'sql/db.class.php' for inclusion (include_path='.:/opt/cpanel/ea-php56/root/usr/share/pear') in /home/telegr28/public_html/channel_manager/detail/test.php on line 137
+[12-Jul-2018 17:01:40 UTC] PHP Fatal error:  Class 'DB' not found in /home/telegr28/public_html/channel_manager/detail/test.php on line 140
+[12-Jul-2018 17:01:41 UTC] PHP Warning:  include(sql/db.class.php): failed to open stream: No such file or directory in /home/telegr28/public_html/channel_manager/detail/test.php on line 137
+[12-Jul-2018 17:01:41 UTC] PHP Warning:  include(): Failed opening 'sql/db.class.php' for inclusion (include_path='.:/opt/cpanel/ea-php56/root/usr/share/pear') in /home/telegr28/public_html/channel_manager/detail/test.php on line 137
+[12-Jul-2018 17:01:41 UTC] PHP Fatal error:  Class 'DB' not found in /home/telegr28/public_html/channel_manager/detail/test.php on line 140
+[12-Jul-2018 17:01:43 UTC] PHP Warning:  include(sql/db.class.php): failed to open stream: No such file or directory in /home/telegr28/public_html/channel_manager/detail/test.php on line 137
+[12-Jul-2018 17:01:43 UTC] PHP Warning:  include(): Failed opening 'sql/db.class.php' for inclusion (include_path='.:/opt/cpanel/ea-php56/root/usr/share/pear') in /home/telegr28/public_html/channel_manager/detail/test.php on line 137
+[12-Jul-2018 17:01:43 UTC] PHP Fatal error:  Class 'DB' not found in /home/telegr28/public_html/channel_manager/detail/test.php on line 140
+[12-Jul-2018 17:01:44 UTC] PHP Warning:  include(sql/db.class.php): failed to open stream: No such file or directory in /home/telegr28/public_html/channel_manager/detail/test.php on line 137
+[12-Jul-2018 17:01:44 UTC] PHP Warning:  include(): Failed opening 'sql/db.class.php' for inclusion (include_path='.:/opt/cpanel/ea-php56/root/usr/share/pear') in /home/telegr28/public_html/channel_manager/detail/test.php on line 137
+[12-Jul-2018 17:01:44 UTC] PHP Fatal error:  Class 'DB' not found in /home/telegr28/public_html/channel_manager/detail/test.php on line 140
+[12-Jul-2018 17:03:32 UTC] PHP Warning:  include(sql/db.class.php): failed to open stream: No such file or directory in /home/telegr28/public_html/channel_manager/detail/test.php on line 137
+[12-Jul-2018 17:03:32 UTC] PHP Warning:  include(): Failed opening 'sql/db.class.php' for inclusion (include_path='.:/opt/cpanel/ea-php56/root/usr/share/pear') in /home/telegr28/public_html/channel_manager/detail/test.php on line 137
+[12-Jul-2018 17:03:32 UTC] PHP Fatal error:  Class 'DB' not found in /home/telegr28/public_html/channel_manager/detail/test.php on line 140
+[14-Jul-2018 19:10:34 UTC] PHP Warning:  include(sql/db.class.php): failed to open stream: No such file or directory in /home/telegr28/public_html/channel_manager/detail/test.php on line 137
+[14-Jul-2018 19:10:34 UTC] PHP Warning:  include(): Failed opening 'sql/db.class.php' for inclusion (include_path='.:/opt/cpanel/ea-php56/root/usr/share/pear') in /home/telegr28/public_html/channel_manager/detail/test.php on line 137
+[14-Jul-2018 19:10:34 UTC] PHP Fatal error:  Class 'DB' not found in /home/telegr28/public_html/channel_manager/detail/test.php on line 140
+[15-Jul-2018 13:33:17 UTC] PHP Warning:  include(sql/db.class.php): failed to open stream: No such file or directory in /home/telegr28/public_html/channel_manager/detail/test.php on line 137
+[15-Jul-2018 13:33:17 UTC] PHP Warning:  include(): Failed opening 'sql/db.class.php' for inclusion (include_path='.:/opt/cpanel/ea-php56/root/usr/share/pear') in /home/telegr28/public_html/channel_manager/detail/test.php on line 137
+[15-Jul-2018 13:33:17 UTC] PHP Fatal error:  Class 'DB' not found in /home/telegr28/public_html/channel_manager/detail/test.php on line 140
